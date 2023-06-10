@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -45,7 +45,7 @@ const images = [one, two, three,];
 
 
 
-const MainSlider = () => {
+const MSlider = () => {
 
 
     const [slider1, setSlider1] = useState(null);
@@ -53,6 +53,7 @@ const MainSlider = () => {
     const [slider3, setSlider3] = useState(null);
     const [slideIndex, setSlideIndex] = useState(0)
     const [currentSlide, setCurrentSlide] = useState(0)
+    const backgroundSliderRef = useRef(null);
 
 
     const mainSlider = {
@@ -64,10 +65,13 @@ const MainSlider = () => {
         useCSS: true,
 
         beforeChange: (current, next) => {
-            setSlideIndex(next)
+            setSlideIndex(next);
+            backgroundSliderRef.current.slickGoTo(next);
         },
-        afterChange: (one, two,) => {
-            setCurrentSlide(one);
+
+
+        afterChange: (current) => {
+            setCurrentSlide(current);
         }
     }
 
@@ -80,14 +84,14 @@ const MainSlider = () => {
     }
 
 
+
     return (
         <div
-            className="overflow-hidden h-screen w-screen flex  justify-center items-center relative"
+            className="overflow-hidden h-screen w-screen flex justify-center items-center relative"
         >
 
             {/* Text Slider */}
             <div className="w-screen h-screen flex justify-center items-center bg-transparent">
-
                 <Slider
                     asNavFor={slider2}
                     ref={slider => (setSlider2(slider))}
@@ -102,7 +106,6 @@ const MainSlider = () => {
                 >
 
                     <div className="w-[100%] h-[900px]  py-20">
-                        <img src={bgRedOne} alt="" className=" absolute left-0 top-0" />
                         <div className="px-[100px]">
                             <p className="font-Grechen text-[300px] leading-[250px]">Cherry</p>
                             <p className="font-Poppins text-[60px] leading-[60px] pl-3">Test yourself</p>
@@ -114,7 +117,6 @@ const MainSlider = () => {
                     </div>
 
                     <div className="w-[100%] h-[900px] py-20 ">
-                        <img src={bgGreenTwo} alt="" className=" absolute left-0 top-0" />
                         <div className="px-[100px]">
                             <p className="font-Grechen text-[300px] leading-[250px]">Kiwi</p>
                             <p className="font-Poppins text-[60px] leading-[60px] pl-3">Test yourself</p>
@@ -126,7 +128,6 @@ const MainSlider = () => {
                     </div>
 
                     <div className="w-[100%] h-[900px] py-20 ">
-                        <img src={bgOrangeOne} alt="" className=" absolute left-0 top-0" />
                         <div className="px-[100px]">
                             <p className="font-Grechen text-[300px] leading-[250px]">Orange</p>
                             <p className="font-Poppins text-[60px] leading-[60px] pl-3">Test yourself</p>
@@ -138,19 +139,16 @@ const MainSlider = () => {
                     </div>
 
                 </Slider>
-
             </div>
-
 
             {/* Main Slider */}
             <div
                 className="w-2/3 h-screen bg-transparent absolute right-0 top-0 flex justify-center items-center
-                 z-[999]
+                 z-[100]
                  ">
-
                 <Slider {...mainSlider}
                     asNavFor={slider3}
-                    ref={slider => (setSlider1(slider))}
+                    ref={slider => setSlider1(slider)}
                     className="w-full h-full bg-transparent pt-[120px]"
                 >
                     {
@@ -160,28 +158,25 @@ const MainSlider = () => {
                         ))
                     }
                 </Slider>
-
             </div>
 
 
             {/* Particale Slider*/}
-            <div className=" w-1/2 top-0 right-0 h-screen absolute z-[-10]">
+            <div className=" w-1/2 top-0 right-0 h-screen absolute z-[10]">
 
                 <Slider
                     asNavFor={slider2}
-                    ref={slider => (setSlider3(slider))}
+                    ref={(slider) => setSlider3(slider)}
                     infinite={true}
                     slidesToShow={1}
+                    swipeToSlide={true}
                     vertical={true}
                     speed={2000}
-                    fade={true}
-                    className="z-[-10] h-screen w-full flex flex-col justify-center items-center"
-                >
+                    // fade={true}
+                    arrows={false}
+                    className="z-[-10] h-screen w-full flex flex-col justify-center items-center">
                     <div className="h-screen relative">
                         <div className="flex h-full">
-                            <img src={bgRedThree} alt="" />
-                            <img src={bgRedTwo} alt="" className="absolute right-0 top-0" />
-
                             <img src={cherry2} alt="" className="w-[184px] h-[196px] absolute top-[19%] left-[23%]" />
                             <img src={cherry3} alt="" className="w-[170px] h-[170px] absolute top-[18%] left-[50%]" />
                             <img src={cherry5} alt="" className="w-[250px] h-[250px] absolute top-[48%] left-[8%]" />
@@ -192,10 +187,6 @@ const MainSlider = () => {
 
                     <div className="h-screen relative">
                         <div className="flex h-full">
-
-                            <img src={bgGreenOne} alt="" />
-                            <img src={bgGreenThree} alt="" className="absolute right-[-100px] top-0" />
-
                             <img src={kiwi6} alt="" className="w-[188px] h-[188px] absolute top-[8%] left-[36%]" />
                             <img src={kiwi3} alt="" className="w-[187px] h-[187px] absolute top-[20%] left-[17%]" />
                             <img src={kiwi2} alt="" className="w-[269px] h-[269px] absolute top-[56%] left-[8%]" />
@@ -207,11 +198,6 @@ const MainSlider = () => {
 
                     <div className="h-screen relative">
                         <div className="flex h-full">
-
-                            <img src={bgOrangeTwo} alt="" />
-                            <img src={bgOrangeThree} alt="" className="absolute right-[-100px] top-0" />
-
-
                             <img src={orange3} alt="" className="w-[194px] h-[194px] absolute top-[20%] left-[16%]" />
                             <img src={orange5} alt="" className="w-[191px] h-[191px] absolute top-[11%] left-[45%]" />
                             <img src={orange2} alt="" className="w-[350px] h-[350px] absolute top-[49%] left-[18%]" />
@@ -219,16 +205,52 @@ const MainSlider = () => {
                         </div>
                     </div>
 
-
                 </Slider>
-
             </div>
 
+            {/* Background Slider */}
+            <div className="absolute">
+                <Slider
+                    asNavFor={slider1}
+                    ref={backgroundSliderRef}
+                    slidesToShow={1}
+                    fade={true}
+                    arrows={false}
+                    infinite={true}
+                    speed={1000}
+                    className=" w-screen h-screen"
+                >
 
+                    <div className="w-full h-full">
+                        <div className="flex justify-between w-full h-full">
+                            <img src={bgRedOne} alt="" className="w-[500px] h-[550px] mt-[100px]" />
+                            <img src={bgRedThree} alt="" className="w-[600px] h-[600px] mt-[230px] ml-[420px] z-10" />
+                            <img src={bgRedTwo} alt="" className="w-[450px] h-[450px] " />
+                        </div>
+                    </div>
+
+                    <div className="w-full h-full">
+                        <div className="flex justify-between w-full h-full">
+                            <img src={bgGreenTwo} alt="" className="w-[500px] h-[550px] mt-[100px]" />
+                            <img src={bgGreenOne} alt="" className="w-[600px] h-[600px] mt-[230px] ml-[420px] z-10" />
+                            <img src={bgGreenThree} alt="" className="w-[450px] h-[450px] " />
+                        </div>
+                    </div>
+
+                    <div className="w-full h-full">
+                        <div className="flex justify-between w-full h-full">
+                            <img src={bgOrangeOne} alt="" className="w-[500px] h-[550px] mt-[100px]" />
+                            <img src={bgOrangeTwo} alt="" className="w-[600px] h-[600px] mt-[230px] ml-[420px] z-10" />
+                            <img src={bgOrangeThree} alt="" className="w-[450px] h-[450px] " />
+                        </div>
+                    </div>
+
+                </Slider>
+            </div>
 
         </div>
     );
 
 }
 
-export default MainSlider;
+export default MSlider;
