@@ -43,18 +43,15 @@ import bgOrangeThree from "../../assets/bgOrangeThree.png";
 
 const images = [one, two, three,];
 
-
-
 const MainSlider = () => {
-
 
     const [slider1, setSlider1] = useState(null);
     const [slider2, setSlider2] = useState(null);
     const [slider3, setSlider3] = useState(null);
     const [slideIndex, setSlideIndex] = useState(0)
-    const [currentSlide, setCurrentSlide] = useState(0)
+    const [currentSlide, setCurrentSlide] = useState(0);
     const backgroundSliderRef = useRef(null);
-
+    const additionalSliderRef = useRef(null);
 
     const mainSlider = {
         infinite: true,
@@ -67,10 +64,12 @@ const MainSlider = () => {
         beforeChange: (current, next) => {
             setSlideIndex(next);
             backgroundSliderRef.current.slickGoTo(next);
+            backgroundSliderRef.current.slickGoTo(next);
+            additionalSliderRef.current.slickGoTo(next);
+            slider1.slickGoTo(next);
         },
 
-
-        afterChange: (current, next) => {
+        afterChange: (current) => {
             setCurrentSlide(current);
         }
     }
@@ -82,8 +81,6 @@ const MainSlider = () => {
             return 'slide';
         }
     }
-
-
 
     return (
         <div
@@ -142,7 +139,7 @@ const MainSlider = () => {
             </div>
 
             {/* Main Slider */}
-            <div
+             <div
                 className="w-2/3 h-screen bg-transparent absolute right-0 top-0 flex justify-center items-center
                  z-[100]
                  ">
@@ -158,7 +155,7 @@ const MainSlider = () => {
                         ))
                     }
                 </Slider>
-            </div>
+            </div> 
 
 
             {/* Particale Slider*/}
@@ -179,20 +176,14 @@ const MainSlider = () => {
                         <div className="flex h-full">
                             <img src={cherry2} alt="" className="w-[184px] h-[196px] absolute top-[19%] left-[23%]" />
                             <img src={cherry3} alt="" className="w-[170px] h-[170px] absolute top-[18%] left-[50%]" />
-                            <img src={cherry5} alt="" className="w-[250px] h-[250px] absolute top-[48%] left-[8%]" />
-                            <img src={cherry6} alt="" className="w-[184px] h-[195px] absolute top-[65%] left-[45%]" />
                             <img src={cherry4} alt="" className="w-[340px] h-[270px] absolute top-[37%] left-[48%]" />
                         </div>
                     </div>
 
                     <div className="h-screen relative">
                         <div className="flex h-full">
-                            <img src={kiwi6} alt="" className="w-[188px] h-[188px] absolute top-[8%] left-[36%]" />
                             <img src={kiwi3} alt="" className="w-[187px] h-[187px] absolute top-[20%] left-[17%]" />
-                            <img src={kiwi2} alt="" className="w-[269px] h-[269px] absolute top-[56%] left-[8%]" />
                             <img src={kiwi4} alt="" className="w-[196px] h-[185px] absolute top-[16%] left-[55%]" />
-                            <img src={kiwi6} alt="" className="w-[188px] h-[188px] absolute top-[56%] left-[60%]" />
-                            <img src={kiwi5} alt="" className="w-[184px] h-[195px] absolute top-[60%] left-[50%]" />
                         </div>
                     </div>
 
@@ -207,6 +198,49 @@ const MainSlider = () => {
 
                 </Slider>
             </div>
+
+
+            {/* Particale Slider Two*/}
+            <div className=" w-1/2 top-0 right-0 h-screen absolute z-[150]">
+
+                <Slider
+                    asNavFor={slider1}
+                    ref={additionalSliderRef}
+                    infinite={true}
+                    slidesToShow={1}
+                    swipeToSlide={true}
+                    vertical={true}
+                    speed={2000}
+                    // fade={true}
+                    arrows={false}
+                    className="h-screen w-full flex flex-col justify-center items-center">
+
+                    <div className="h-screen relative">
+                        <div className="flex h-full">
+                            <img src={cherry5} alt="" className="w-[250px] h-[250px] absolute top-[48%] left-[8%]" />
+                            <img src={cherry6} alt="" className="w-[184px] h-[195px] absolute top-[65%] left-[40%]" />
+                        </div>
+                    </div>
+
+                    <div className="h-screen relative">
+                        <div className="flex h-full">
+                            <img src={kiwi6} alt="" className="w-[188px] h-[188px] absolute top-[8%] left-[36%]" />
+                            <img src={kiwi2} alt="" className="w-[269px] h-[269px] absolute top-[56%] left-[8%]" />
+                            <img src={kiwi6} alt="" className="w-[188px] h-[188px] absolute top-[56%] left-[60%]" />
+                            <img src={kiwi5} alt="" className="w-[184px] h-[195px] absolute top-[60%] left-[50%]" />
+                        </div>
+                    </div>
+
+                    <div className="h-screen relative">
+                        <div className="flex h-full">
+                            <img src={orange4} alt="" className="w-[300px] h-[300px] absolute top-[40%] left-[45%]" />
+                        </div>
+                    </div>
+
+                </Slider>
+            </div>
+
+
 
             {/* Background Slider */}
             <div className="absolute">
@@ -246,7 +280,7 @@ const MainSlider = () => {
                     </div>
 
                 </Slider>
-            </div>
+            </div> 
 
         </div>
     );

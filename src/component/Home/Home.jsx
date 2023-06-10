@@ -1,3 +1,4 @@
+import MainSlider from "../MainSlider/MainSlider"
 import Navbar from "../Navbar/Navbar"
 import MSlider from "../Slider/Slider"
 
@@ -10,9 +11,9 @@ const Home = () => {
                 <Navbar />
             </div> */}
 
-            <MSlider/>
+            {/* <MSlider/> */}
 
-            {/* <MainSlider /> */}
+            <MainSlider />
         </div>
     )
 }
