@@ -48,10 +48,10 @@ const MainSlider = () => {
     const [slider1, setSlider1] = useState(null);
     const [slider2, setSlider2] = useState(null);
     const [slider3, setSlider3] = useState(null);
+    const [slider4, setSlider4] = useState(null);
     const [slideIndex, setSlideIndex] = useState(0)
     const [currentSlide, setCurrentSlide] = useState(0);
     const backgroundSliderRef = useRef(null);
-    const additionalSliderRef = useRef(null);
 
     const mainSlider = {
         infinite: true,
@@ -59,13 +59,11 @@ const MainSlider = () => {
         slidesToShow: 1,
         arrows: false,
         slidesToScroll: 1,
-        useCSS: true,
+        
 
         beforeChange: (current, next) => {
             setSlideIndex(next);
             backgroundSliderRef.current.slickGoTo(next);
-            backgroundSliderRef.current.slickGoTo(next);
-            additionalSliderRef.current.slickGoTo(next);
             slider1.slickGoTo(next);
         },
 
@@ -99,7 +97,7 @@ const MainSlider = () => {
                     arrows={false}
                     infinite={true}
                     speed={1000}
-                    className=" w-screen h-[900px] pt-[100px] bg-transparent"
+                    className=" w-screen h-[900px] pt-[120px] bg-transparent"
                 >
 
                     <div className="w-[100%] h-[900px]  py-20">
@@ -134,19 +132,17 @@ const MainSlider = () => {
                             </div>
                         </div>
                     </div>
-
                 </Slider>
             </div>
 
             {/* Main Slider */}
              <div
-                className="w-2/3 h-screen bg-transparent absolute right-0 top-0 flex justify-center items-center
-                 z-[100]
-                 ">
+                className="w-full h-screen bg-transparent absolute right-0 top-0 flex justify-center items-center
+                 z-[100] ">
                 <Slider {...mainSlider}
                     asNavFor={slider3}
                     ref={slider => setSlider1(slider)}
-                    className="w-full h-full bg-transparent pt-[120px]"
+                    className="w-full h-full bg-transparent pt-[140px]"
                 >
                     {
                         images.map((img, index) => (
@@ -157,9 +153,8 @@ const MainSlider = () => {
                 </Slider>
             </div> 
 
-
             {/* Particale Slider*/}
-            <div className=" w-1/2 top-0 right-0 h-screen absolute z-[10]">
+            <div className=" w-1/2 top-0 right-0 h-screen absolute z-[10] ">
 
                 <Slider
                     asNavFor={slider2}
@@ -169,8 +164,8 @@ const MainSlider = () => {
                     swipeToSlide={true}
                     vertical={true}
                     speed={2000}
-                    // fade={true}
                     arrows={false}
+                    
                     className="z-[-10] h-screen w-full flex flex-col justify-center items-center">
                     <div className="h-screen relative">
                         <div className="flex h-full">
@@ -201,19 +196,19 @@ const MainSlider = () => {
 
 
             {/* Particale Slider Two*/}
-            <div className=" w-1/2 top-0 right-0 h-screen absolute z-[150]">
+            <div className=" w-1/2 top-0 right-0 h-screen absolute z-[150] ">
 
                 <Slider
                     asNavFor={slider1}
-                    ref={additionalSliderRef}
+                    ref={slider =>setSlider4(slider)}
                     infinite={true}
                     slidesToShow={1}
                     swipeToSlide={true}
                     vertical={true}
                     speed={2000}
-                    // fade={true}
                     arrows={false}
-                    className="h-screen w-full flex flex-col justify-center items-center">
+                    
+                    className="h-screen w-full flex flex-col justify-center items-center ">
 
                     <div className="h-screen relative">
                         <div className="flex h-full">

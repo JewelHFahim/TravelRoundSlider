@@ -4,15 +4,15 @@
   }
   
   .slide img {
-    margin-left: 450px;
+    margin-left: 1100px;
     width: 500px;
     height: 720px;
   }
   
   .slide {
     height: 100%;
-    opacity: 0.5;
-    transform: scale(.7);
+    opacity: 0.2;
+    transform: scale(.5);
   }
   
   
