@@ -1,10 +1,10 @@
-import logo from "../../assets/LOGO.png"
+// import logo from "../../assets/LOGO.png"
 
 const Navbar = () => {
     return (
         <div className="w-full h-[150px] bg-transparent flex justify-between items-center px-[150px] pt-5">
             <div>
-                <img src={logo} alt="" className="w-[160px] h-[145px]" />
+                {/* <img src={logo} alt="" className="w-[160px] h-[145px]" /> */}
             </div>
 
             <ul className="flex items-center gap-[40px] font-Poppins text-[18px] font-[600]">

@@ -6,9 +6,9 @@ const Home = () => {
     return (
         <div className="relative">
 
-            <div className=" w-full absolute top-0 left-0 z-[99999]">
+            {/* <div className=" w-full absolute top-0 left-0 z-[99999]">
                 <Navbar />
-            </div>
+            </div> */}
 
             <MainSlider />
         </div>
