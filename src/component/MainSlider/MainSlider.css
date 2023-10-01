@@ -3,7 +3,7 @@
 }
 
 /* vsb */
-.mainSlider .slick-active {
+/* .mainSlider .slick-active {
   transform-origin: center center;
   animation: vsb 2.5s ease-in-out;
 }
@@ -17,9 +17,9 @@
     transform: rotate(360deg) ;
     opacity: 1;
   }
-}
+} */
 
-.ParticaleSlider .slick-active {
+/* .ParticaleSlider .slick-active {
   transform-origin: center center;
   animation-delay: .5s !important;
   animation: ParticaleSlider 1s ease-in-out;
@@ -36,7 +36,7 @@
     transform: rotate(80deg) ;
     opacity: 1;
   }
-}
+} */
 
 .BackgroundSlider .slick-active {
   transform-origin: center center;
@@ -56,3 +56,131 @@
     opacity: 1;
   }
 }
+
+
+
+/* Animation for Next and Previous Slides */
+
+.mainSlider .prev-slide img {
+  transform-origin: center center;
+  animation: mainSlider 2.5s ease-in-out;
+}
+@keyframes mainSlider{
+  0% {
+    transform: rotate(0) ;
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(360deg) ;
+    opacity: 1;
+  }
+}
+
+.ParticaleSlider .prev-slide img{
+  transform-origin: center center;
+  animation-delay: .5s !important;
+  animation: ParticaleSlider 1s ease-in-out;
+}
+
+@keyframes ParticaleSlider {
+  0% {
+    transform: rotate(0) ;
+    opacity: 1;
+  }
+
+
+  100% {
+    transform: rotate(80deg) ;
+    opacity: 1;
+  }
+}
+
+
+.BackgroundSlider .prev-slide img {
+  transform-origin: center center;
+  animation-delay: 1s !important;
+  animation: BackgroundSlider 1s ease-in-out;
+}
+
+@keyframes BackgroundSlider {
+  0% {
+    transform: rotate(0) ;
+    opacity: 1;
+  }
+
+
+  100% {
+    transform: rotate(50deg) ;
+    opacity: 1;
+  }
+}
+
+
+
+/* Animation for Next and Previous Slides */
+
+.mainSlider .next-slide img {
+  transform-origin: center center;
+  animation: mainSlider 2.5s ease-in-out;
+}
+@keyframes mainSlider{
+  0% {
+    transform: rotate(0) ;
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(360deg) ;
+    opacity: 1;
+  }
+}
+
+.ParticaleSlider .next-slide img{
+  transform-origin: center center;
+  animation-delay: .5s !important;
+  animation: ParticaleSlider 1s ease-in-out;
+}
+
+@keyframes ParticaleSlider {
+  0% {
+    transform: rotate(0) ;
+    opacity: 1;
+  }
+
+
+  100% {
+    transform: rotate(80deg) ;
+    opacity: 1;
+  }
+}
+
+
+.BackgroundSlider .next-slide img {
+  transform-origin: center center;
+  animation-delay: 1s !important;
+  animation: BackgroundSlider 1s ease-in-out;
+}
+
+@keyframes BackgroundSlider {
+  0% {
+    transform: rotate(0) ;
+    opacity: 1;
+  }
+
+
+  100% {
+    transform: rotate(50deg) ;
+    opacity: 1;
+  }
+}
+
+
+
+
+/* 
+.next-slide img {
+  animation: your-next-slide-animation 2s ease-in-out;
+}
+
+
+@keyframes your-next-slide-animation {
+} */

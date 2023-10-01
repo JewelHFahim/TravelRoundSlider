@@ -47,6 +47,13 @@ const MainSlider = () => {
     beforeChange: (current, next) => {
       setPrevSlide(current); // Store the previous slide index
 
+      // Determine the direction of the slide change
+      if (current < next) {
+        setNextSlide(next + 1); // Calculate the next slide index
+      } else {
+        setNextSlide(next - 1); // Calculate the next slide index
+      }
+
       setSlideIndex(next);
       backgroundSliderRef.current.slickGoTo(next);
       slider1.slickGoTo(next);
@@ -54,7 +61,6 @@ const MainSlider = () => {
 
     afterChange: (current) => {
       setCurrentSlide(current);
-      setNextSlide(current + 1);
     },
   };
 
@@ -68,7 +74,7 @@ const MainSlider = () => {
 
   return (
     <div className="overflow-hidden h-screen w-screen flex justify-center items-center relative">
-
+        
       {/* Main Slider */}
       <div className="w-[810px] h-[810px] bg-transparent absolute  flex justify-center items-center z-[100] rounded-full">
         <Slider
@@ -90,7 +96,7 @@ const MainSlider = () => {
         </Slider>
       </div>
 
-      {/* Particale Slider*/}
+      {/* Particle Slider*/}
       <div className=" w-[1450px] h-[1450px] absolute z-[10] ">
         <Slider
           fade={true}
@@ -154,7 +160,6 @@ const MainSlider = () => {
           </div>
         </Slider>
       </div>
-      
     </div>
   );
 };
