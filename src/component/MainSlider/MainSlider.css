@@ -1,186 +1,101 @@
+/******************************************************* Previous Code *******************/
 .slide img {
   border-radius: 50%;
 }
 
-/* vsb */
-/* .mainSlider .slick-active {
-  transform-origin: center center;
-  animation: vsb 2.5s ease-in-out;
+.slick-active img {
+  opacity: 1;
 }
 
-@keyframes vsb {
-  0% {
-    transform: rotate(0) ;
-    opacity: 1;
-  }
-  100% {
-    transform: rotate(360deg) ;
-    opacity: 1;
-  }
-} */
-
-/* .ParticaleSlider .slick-active {
-  transform-origin: center center;
-  animation-delay: .5s !important;
-  animation: ParticaleSlider 1s ease-in-out;
-}
-
-@keyframes ParticaleSlider {
-  0% {
-    transform: rotate(0) ;
-    opacity: 1;
-  }
-
-
-  100% {
-    transform: rotate(80deg) ;
-    opacity: 1;
-  }
-} */
-
-.BackgroundSlider .slick-active {
-  transform-origin: center center;
-  animation-delay: 1s !important;
-  animation: BackgroundSlider 1s ease-in-out;
-}
-
-@keyframes BackgroundSlider {
-  0% {
-    transform: rotate(0) ;
-    opacity: 1;
-  }
-
-
-  100% {
-    transform: rotate(50deg) ;
-    opacity: 1;
-  }
-}
-
-
-
-/* Animation for Next and Previous Slides */
-
-.mainSlider .prev-slide img {
-  transform-origin: center center;
-  animation: mainSlider 2.5s ease-in-out;
-}
-@keyframes mainSlider{
-  0% {
-    transform: rotate(0) ;
-    opacity: 1;
-  }
-  100% {
-    transform: rotate(360deg) ;
-    opacity: 1;
-  }
-}
-
-.ParticaleSlider .prev-slide img{
-  transform-origin: center center;
-  animation-delay: .5s !important;
-  animation: ParticaleSlider 1s ease-in-out;
-}
-
-@keyframes ParticaleSlider {
-  0% {
-    transform: rotate(0) ;
-    opacity: 1;
-  }
-
-
-  100% {
-    transform: rotate(80deg) ;
-    opacity: 1;
-  }
-}
-
-
-.BackgroundSlider .prev-slide img {
-  transform-origin: center center;
-  animation-delay: 1s !important;
-  animation: BackgroundSlider 1s ease-in-out;
-}
-
-@keyframes BackgroundSlider {
-  0% {
-    transform: rotate(0) ;
-    opacity: 1;
-  }
-
-
-  100% {
-    transform: rotate(50deg) ;
-    opacity: 1;
-  }
-}
-
-
-
-/* Animation for Next and Previous Slides */
-
-.mainSlider .next-slide img {
-  transform-origin: center center;
-  animation: mainSlider 2.5s ease-in-out;
-}
-@keyframes mainSlider{
-  0% {
-    transform: rotate(0) ;
-    opacity: 1;
-  }
-  100% {
-    transform: rotate(360deg) ;
-    opacity: 1;
-  }
-}
-
-.ParticaleSlider .next-slide img{
-  transform-origin: center center;
-  animation-delay: .5s !important;
-  animation: ParticaleSlider 1s ease-in-out;
-}
-
-@keyframes ParticaleSlider {
-  0% {
-    transform: rotate(0) ;
-    opacity: 1;
-  }
-
-
-  100% {
-    transform: rotate(80deg) ;
-    opacity: 1;
-  }
-}
-
-
-.BackgroundSlider .next-slide img {
-  transform-origin: center center;
-  animation-delay: 1s !important;
-  animation: BackgroundSlider 1s ease-in-out;
-}
-
-@keyframes BackgroundSlider {
-  0% {
-    transform: rotate(0) ;
-    opacity: 1;
-  }
-
-
-  100% {
-    transform: rotate(50deg) ;
-    opacity: 1;
-  }
-}
-
-
-
-
-/* 
+.mainSlider .slick-active,
 .next-slide img {
-  animation: your-next-slide-animation 2s ease-in-out;
+  opacity: 1;
+  animation: mainSlider 2.5s ease-in-out;
 }
 
+@keyframes mainSlider {
+  0% {
+    transform: rotate(0);
+    opacity: 0;
+  }
 
-@keyframes your-next-slide-animation {
-} */
+  100% {
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+
+.ParticaleSlider .slick-active,
+.next-slide img {
+  opacity: 1;
+  transform-origin: center center;
+  animation-delay: 0.1s !important;
+  animation: ParticaleSlider 2s ease-in-out;
+}
+
+@keyframes ParticaleSlider {
+  0% {
+    transform: rotate(0);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: rotate(60deg);
+    opacity: 1;
+  }
+}
+
+.BackgroundSlider .slick-active,
+.next-slide img {
+  opacity: 1;
+  transform-origin: center center;
+  animation-delay: 0.2s !important;
+  animation: BackgroundSlider 2s ease-in-out;
+}
+
+@keyframes BackgroundSlider {
+  0% {
+    transform: rotate(0);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: rotate(30deg);
+    opacity: 1;
+  }
+}
+
+.slick-dots {
+  color: white;
+  width: 250px;
+  z-index: 999 !important;
+  position: absolute;
+  bottom: 50px;
+  right: -450px;
+}
+
+.slick-dots li button:before {
+  position: absolute;
+  top: -4px;
+  left: 0;
+  padding-top: 2px;
+  font-size: 14px;
+  width: 20px;
+  height: 20px;
+  content: "•";
+  opacity: 1;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slick-dots li.slick-active button:before {
+  border: 1px solid white;
+  border-radius: 50%;
+  opacity: 1;
+  scale: 1.1;
+  color: white;
+}

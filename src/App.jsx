@@ -1,4 +1,5 @@
 import Home from "./component/Home/Home"
+import "./App.css"
 
 const App = () => {
 

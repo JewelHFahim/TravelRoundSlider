@@ -17,22 +17,36 @@ import bg2 from "../../assets/slide-1-img3.png";
 import bg3 from "../../assets/slide-3-img3.png";
 
 import bg from "../../assets/bgImg.png";
+import { motion } from "framer-motion";
 
-const images = [one, two, three];
+const images = [three, two, three];
+
+const datas = [
+  {
+    img: one,
+    title: "Indonesia",
+    des: "Hill View"
+  },
+  {
+    img: two,
+    title: "Malaysia",
+    des: "Hill View"
+  },
+  {
+    img: three,
+    title: "Nepal",
+    des: "Hill View"
+  },
+]
 
 const MainSlider = () => {
+
   const [prevSlide, setPrevSlide] = useState(0);
-  console.log("prev", prevSlide);
-
   const [nextSlide, setNextSlide] = useState(0);
-  console.log("next", nextSlide);
-
   const [slider1, setSlider1] = useState(null);
   const [slider2, setSlider2] = useState(null);
   const [slider3, setSlider3] = useState(null);
   const [slideIndex, setSlideIndex] = useState(0);
-  console.log("current", slideIndex);
-  console.log(slideIndex);
   const [currentSlide, setCurrentSlide] = useState(0);
   const backgroundSliderRef = useRef(null);
 
@@ -43,15 +57,15 @@ const MainSlider = () => {
     slidesToShow: 1,
     arrows: false,
     slidesToScroll: 1,
+    dots: true,
 
     beforeChange: (current, next) => {
-      setPrevSlide(current); // Store the previous slide index
+      setPrevSlide(current);
 
-      // Determine the direction of the slide change
       if (current < next) {
-        setNextSlide(next + 1); // Calculate the next slide index
+        setNextSlide(next + 1);
       } else {
-        setNextSlide(next - 1); // Calculate the next slide index
+        setNextSlide(next - 1);
       }
 
       setSlideIndex(next);
@@ -66,31 +80,31 @@ const MainSlider = () => {
 
   const matchIndex = (index) => {
     if (index === slideIndex) {
-      return "slide slide-active";
+      return "slide slick-active";
+    } else if (index === prevSlide) {
+      return "slide prev-slide";
+    } else if (index === nextSlide) {
+      return "slide next-slide";
     } else {
       return "slide";
     }
   };
 
   return (
-    <div className="overflow-hidden h-screen w-screen flex justify-center items-center relative">
-        
+    <div className="overflow-hidden h-screen w-screen flex justify-center items-center relative ">
       {/* Main Slider */}
-      <div className="w-[810px] h-[810px] bg-transparent absolute  flex justify-center items-center z-[100] rounded-full">
+
+      <div className="w-[810px] h-[810px] bg-transparent absolute flex justify-center items-center z-[100] rounded-full border-2">
         <Slider
           {...mainSlider}
           asNavFor={slider3}
           ref={(slider) => setSlider1(slider)}
-          className="w-full h-full bg-transparent rounded-full mainSlider"
+          className="w-full h-full bg-transparent rounded-full mainSlider border border-red-600"
         >
-          {images.map((img, index) => (
-            <div
-              key={img}
-              className={
-                index === currentSlide - 1 ? "prev-slide" : matchIndex(index)
-              }
-            >
-              <img src={img} alt="" className="" />
+          {datas.map((data, index) => (
+            <div key={index} className={`${matchIndex(index)} border border-green-600 relative`}>
+              <img src={data.img} alt="" />
+              <h1 className="text-[300px] leading-0 border-2 border-orange-800 absolute top-0 ">{data.title}</h1>
             </div>
           ))}
         </Slider>
@@ -111,10 +125,11 @@ const MainSlider = () => {
         >
           <div className="w-full h-full rounded-full object-cover relative">
             <img
-              src={img1}
+              src={img3}
               alt=""
               className="w-full h-full rounded-full object-cover"
             />
+
           </div>
 
           <div className="w-full h-full rounded-full object-cover relative">
@@ -145,10 +160,11 @@ const MainSlider = () => {
           arrows={false}
           infinite={true}
           speed={1000}
+          dots={true}
           className=" w-full h-full  BackgroundSlider "
         >
           <div className="w-full h-full  object-cover">
-            <img src={bg} alt="" />
+            <img src={bg3} alt="" />
           </div>
 
           <div className="w-full h-full  object-cover">

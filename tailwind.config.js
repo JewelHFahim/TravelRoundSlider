@@ -6,9 +6,8 @@ export default {
   ],
   theme: {
     fontFamily: {
-      'Grechen': ['Grechen Fuemen', 'cursive'],
-      'Poppins': ['Poppins', 'sans-serif'],
-      'Podkova': ['Podkova', 'serif'],
+      'Inter': ['Inter', 'san-serif'],
+      'Montserrat': ['Montserrat', 'san-serif'],
     },
     extend: {},
   },
